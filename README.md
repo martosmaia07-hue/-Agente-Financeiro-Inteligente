@@ -1,140 +1,199 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
+# 🤖 Agente Financeiro Inteligente com IA Generativa — **San (Multiagente)**
 
 ## Contexto
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
+Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Este projeto implementa o **San**, um agente financeiro multi-modo que usa IA Generativa para:
 
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
+* **Antecipar necessidades** (roteamento automático por intenção)
+* **Personalizar** orientações com base no contexto do cliente (perfil + transações + histórico)
+* **Cocriar soluções** com linguagem simples (educação + plano prático)
+* **Garantir segurança** (anti-golpe + anti-alucinação + regras e validação final)
 
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+O San opera em **3 personas**:
 
----
-
-## O Que Você Deve Entregar
-
-### 1. Documentação do Agente
-
-Defina **o que** seu agente faz e **como** ele funciona:
-
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
-
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
+* 🛡️ **Guardião:** anti-golpe / anti-fraude (prioridade máxima)
+* 📚 **Finanças:** educação financeira didática, sem recomendar investimentos específicos
+* 🧭 **Autopiloto:** planejamento e organização de orçamento com base em transações
 
 ---
 
-### 2. Base de Conhecimento
+## Visão Geral do Projeto
 
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
+### O problema que resolve
 
-| Arquivo | Formato | Descrição |
-|---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
+Clientes frequentemente:
 
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
+* caem em golpes (WhatsApp/SMS/ligação falsa, taxa de liberação, pedido de código);
+* não entendem conceitos básicos de finanças e tomam decisões impulsivas;
+* não conseguem controlar gastos e manter reserva.
 
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
+### A solução
 
----
+O San combina:
 
-### 3. Prompts do Agente
-
-Documente os prompts que definem o comportamento do seu agente:
-
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
-
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
+* **LangGraph** (fluxo consistente): `router → build_prompt → LLM → checker`
+* **Ollama** (LLM local): roda modelos leves com baixo custo e bom desempenho
+* **Streamlit**: interface de chat rápida e simples
+* **Base mock (CSV/JSON)**: dados sintéticos do cliente para personalizar as respostas
 
 ---
 
-### 4. Aplicação Funcional
+## Como Rodar
 
-Desenvolva um **protótipo funcional** do seu agente:
+### Requisitos
 
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
+* Python 3.10+
+* Ollama instalado e rodando
+* Dependências Python (Streamlit, requests, pandas, langgraph)
 
-📁 **Pasta:** [`src/`](./src/)
+### 1) Preparar ambiente
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2) Baixar um modelo leve no Ollama (recomendado)
+
+Modelo recomendado (baixo custo SSD e bom desempenho):
+
+```bash
+ollama pull llama3.2
+```
+
+> Alternativa ainda mais leve: `gemma2:2b` (se SSD estiver muito apertado).
+
+### 3) Configurar caminho do dataset (opcional)
+
+O projeto pode ler os datasets a partir de um caminho fixo no Windows. Exemplo:
+
+```python
+BASE_DATA = Path(r"D:\Pessoal\Secular\Machine Learning\protótipo_bia\dio-lab-bia-do-futuro\data")
+```
+
+Ou via variável de ambiente (recomendado):
+
+**PowerShell**
+
+```powershell
+setx BIA_DATA_DIR "D:\Pessoal\Secular\Machine Learning\protótipo_bia\dio-lab-bia-do-futuro\data"
+```
+
+### 4) Rodar o app
+
+```bash
+streamlit run src/app.py
+```
 
 ---
 
-### 5. Avaliação e Métricas
+## Troca de Modelo e Economia de SSD
 
-Descreva como você avalia a qualidade do seu agente:
+### Remover modelo antigo do Ollama (ex.: `gpt-oss`)
 
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
+```bash
+ollama list
+ollama rm gpt-oss
+```
 
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
+### Baixar modelo novo
+
+```bash
+ollama pull llama3.2
+```
+
+### Trocar o modelo no código
+
+No `src/app.py`, altere:
+
+```python
+MODELO = "llama3.2"
+```
 
 ---
 
-### 6. Pitch
+## O Que Você Deve Entregar (como este repo resolve)
 
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
+### 1. Documentação do Agente ✅
 
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
+* Caso de uso, persona/tom de voz, arquitetura e segurança.
+  📄 `docs/01-documentacao-agente.md`
 
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
+### 2. Base de Conhecimento ✅
+
+* Uso de dataset mock (CSV/JSON), redução de contexto e filtros por agente.
+  📄 `docs/02-base-conhecimento.md`
+
+### 3. Prompts do Agente ✅
+
+* 3 System Prompts (Guardião, Finanças, Autopiloto), exemplos e edge cases.
+  📄 `docs/03-prompts.md`
+
+### 4. Aplicação Funcional ✅
+
+* Chat em Streamlit + Ollama + LangGraph.
+  📁 `src/`
+
+### 5. Avaliação e Métricas ✅
+
+* Métricas de roteamento, segurança, consistência, uso do contexto e latência.
+  📄 `docs/04-metricas.md`
+
+### 6. Pitch ✅
+
+* Roteiro do pitch de 3 minutos + checklist e link.
+  📄 `docs/05-pitch.md`
 
 ---
 
-## Ferramentas Sugeridas
+## Arquitetura (resumo)
 
-Todas as ferramentas abaixo possuem versões gratuitas:
+O fluxo é controlado pelo **LangGraph** para manter consistência de comportamento:
 
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
+1. `router`: escolhe o agente com base na mensagem (Guardião tem prioridade)
+2. `build_prompt`: monta o prompt com system prompt + contexto (CSV/JSON), aplicando filtros por agente
+3. `llm`: chama Ollama (`/api/generate`)
+4. `checker`: reforça regras finais (máx. 3 parágrafos, reforço anti-sensível)
+
+---
+
+## Ferramentas Usadas
+
+| Categoria    | Ferramentas       |
+| ------------ | ----------------- |
+| Interface    | Streamlit         |
+| LLM local    | Ollama            |
+| Orquestração | LangGraph         |
+| Dados        | CSV/JSON + pandas |
+| HTTP         | requests          |
 
 ---
 
 ## Estrutura do Repositório
+
+> Observação: no projeto final, os datasets podem estar em `data/` ou em uma pasta externa configurada por caminho (ex.: `BIA_DATA_DIR`).
 
 ```
 📁 lab-agente-financeiro/
 │
 ├── 📄 README.md
 │
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
+├── 📁 data/                          # Dados mockados (opcional/local)
+│   ├── historico_atendimento.csv
+│   ├── perfil_investidor.json
+│   ├── produtos_financeiros.json
+│   └── transacoes.csv
 │
-├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
+├── 📁 docs/
+│   ├── 01-documentacao-agente.md
+│   ├── 02-base-conhecimento.md
+│   ├── 03-prompts.md
+│   ├── 04-metricas.md
+│   └── 05-pitch.md
 │
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
+├── 📁 src/
+│   └── app.py
 │
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
+└── 📁 examples/
     └── README.md
 ```
 
@@ -142,8 +201,10 @@ Todas as ferramentas abaixo possuem versões gratuitas:
 
 ## Dicas Finais
 
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+1. **Segurança primeiro:** qualquer sinal de golpe deve ser tratado pelo Guardião.
+2. **Contexto enxuto:** reduzir CSV/JSON melhora qualidade e latência.
+3. **Consistência com LangGraph:** o fluxo reduz “mudança de personalidade” e aumenta previsibilidade.
+4. **Teste cenários reais:** use prompts de golpe, educação e orçamento para validar roteamento e regras.
+5. **Cuide do SSD:** remova modelos antigos com `ollama rm` e prefira modelos menores.
+
+

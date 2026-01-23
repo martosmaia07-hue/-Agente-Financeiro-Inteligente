@@ -1,0 +1,62 @@
+data,descricao,categoria,valor,tipo
+2025-10-12,Energia,moradia,240.0,saida
+2025-10-12,Supermercado,alimentacao,127.44,saida
+2025-10-13,Farmácia,saude,106.27,saida
+2025-10-14,Água,moradia,95.0,saida
+2025-10-14,Farmácia,saude,142.36,saida
+2025-10-15,Supermercado,alimentacao,339.59,saida
+2025-10-17,Combustível,transporte,197.29,saida
+2025-10-20,Restaurante,alimentacao,67.93,saida
+2025-10-22,Depósito - Reserva,poupanca,92.14,saida
+2025-10-23,Farmácia,saude,47.06,saida
+2025-10-27,Combustível,transporte,157.48,saida
+2025-10-28,Streaming,lazer,29.9,saida
+2025-10-29,Supermercado,alimentacao,333.98,saida
+2025-11-01,Salário,receita,5200.0,entrada
+2025-11-01,Streaming,lazer,55.9,saida
+2025-11-02,Aluguel,moradia,1250.0,saida
+2025-11-02,Depósito - Reserva,poupanca,207.65,saida
+2025-11-03,Streaming,lazer,55.9,saida
+2025-11-05,Plano de saúde,saude,420.0,saida
+2025-11-05,Farmácia,saude,109.42,saida
+2025-11-06,Combustível,transporte,120.08,saida
+2025-11-08,Cartão - pagamento,cartao,650.0,saida
+2025-11-09,Streaming,lazer,34.9,saida
+2025-11-10,Internet,moradia,109.9,saida
+2025-11-11,Streaming,lazer,34.9,saida
+2025-11-12,Energia,moradia,240.0,saida
+2025-11-14,Água,moradia,95.0,saida
+2025-11-15,Combustível,transporte,245.95,saida
+2025-11-16,Supermercado,alimentacao,268.33,saida
+2025-11-18,Farmácia,saude,115.31,saida
+2025-11-21,Depósito - Reserva,poupanca,89.21,saida
+2025-11-23,Farmácia,saude,70.81,saida
+2025-11-24,Depósito - Reserva,poupanca,96.64,saida
+2025-11-30,Restaurante,alimentacao,47.04,saida
+2025-12-01,Salário,receita,5200.0,entrada
+2025-12-01,Restaurante,alimentacao,154.88,saida
+2025-12-02,Aluguel,moradia,1250.0,saida
+2025-12-02,Supermercado,alimentacao,180.88,saida
+2025-12-04,Supermercado,alimentacao,369.92,saida
+2025-12-05,Plano de saúde,saude,420.0,saida
+2025-12-06,Depósito - Reserva,poupanca,93.94,saida
+2025-12-08,Cartão - pagamento,cartao,650.0,saida
+2025-12-08,Depósito - Reserva,poupanca,102.25,saida
+2025-12-09,Supermercado,alimentacao,187.5,saida
+2025-12-10,Internet,moradia,109.9,saida
+2025-12-10,Farmácia,saude,42.88,saida
+2025-12-11,Streaming,lazer,55.9,saida
+2025-12-12,Energia,moradia,240.0,saida
+2025-12-12,Farmácia,saude,151.76,saida
+2025-12-13,Combustível,transporte,148.5,saida
+2025-12-14,Água,moradia,95.0,saida
+2025-12-16,Farmácia,saude,62.35,saida
+2025-12-19,Combustível,transporte,243.63,saida
+2025-12-20,Pix 02:13 • 'Suporte Mercado' (novo favorecido),pix,1800.0,saida
+2025-12-20,"Pix 02:15 • 'Teste' R$ 1,00 (novo favorecido)",pix,1.0,saida
+2025-12-21,Farmácia,saude,66.61,saida
+2025-12-21,Pix 01:48 • 'Entrega Expressa' (favorecido novo),pix,950.0,saida
+2025-12-21,Pix 01:52 • 'Taxa de liberação' (mensagem suspeita),pix,299.9,saida
+2025-12-22,Pix 03:06 • 'Fulano' (chave aleatória),pix,2200.0,saida
+2025-12-24,Farmácia,saude,143.09,saida
+2025-12-26,Combustível,transporte,250.31,saida

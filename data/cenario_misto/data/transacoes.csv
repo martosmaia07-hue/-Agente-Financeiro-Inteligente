@@ -1,0 +1,79 @@
+data,descricao,categoria,valor,tipo
+2025-10-13,Streaming,lazer,29.9,saida
+2025-10-15,Delivery,alimentacao,105.95,saida
+2025-10-16,Delivery,alimentacao,109.74,saida
+2025-10-17,Streaming,lazer,55.9,saida
+2025-10-18,Freela,receita,900.0,entrada
+2025-10-18,Uber/99,transporte,41.12,saida
+2025-10-20,Juros do rotativo,cartao,85.0,saida
+2025-10-21,Delivery,alimentacao,62.04,saida
+2025-10-23,Delivery,alimentacao,117.06,saida
+2025-10-24,Delivery,alimentacao,109.03,saida
+2025-10-26,Delivery,alimentacao,62.93,saida
+2025-10-28,Uber/99,transporte,54.25,saida
+2025-10-31,Supermercado,alimentacao,132.33,saida
+2025-11-01,Restaurante,alimentacao,93.77,saida
+2025-11-02,Aluguel,moradia,1400.0,saida
+2025-11-02,Restaurante,alimentacao,170.63,saida
+2025-11-03,Compras online,compras,348.39,saida
+2025-11-04,Delivery,alimentacao,89.31,saida
+2025-11-05,Salário,receita,4800.0,entrada
+2025-11-05,Plano de saúde,saude,390.0,saida
+2025-11-06,Condomínio,moradia,380.0,saida
+2025-11-06,Uber/99,transporte,33.89,saida
+2025-11-07,Compras online,compras,309.06,saida
+2025-11-08,Cartão - pagamento mínimo,cartao,240.0,saida
+2025-11-09,Academia,saude,129.9,saida
+2025-11-10,Internet,moradia,119.9,saida
+2025-11-11,Celular,moradia,59.9,saida
+2025-11-11,Streaming,lazer,55.9,saida
+2025-11-13,Restaurante,alimentacao,136.95,saida
+2025-11-14,Compras online,compras,232.61,saida
+2025-11-15,Streaming,lazer,34.9,saida
+2025-11-18,Freela,receita,900.0,entrada
+2025-11-18,Compras online,compras,275.81,saida
+2025-11-19,Uber/99,transporte,53.95,saida
+2025-11-20,Juros do rotativo,cartao,85.0,saida
+2025-11-20,Uber/99,transporte,25.26,saida
+2025-11-21,Transferência para reserva,poupanca,134.54,saida
+2025-11-24,Restaurante,alimentacao,60.97,saida
+2025-11-26,Streaming,lazer,55.9,saida
+2025-11-27,Streaming,lazer,29.9,saida
+2025-11-28,Streaming,lazer,55.9,saida
+2025-11-29,Restaurante,alimentacao,68.47,saida
+2025-11-30,Restaurante,alimentacao,43.2,saida
+2025-12-01,Compras online,compras,165.14,saida
+2025-12-02,Aluguel,moradia,1400.0,saida
+2025-12-02,Supermercado,alimentacao,459.11,saida
+2025-12-03,Streaming,lazer,29.9,saida
+2025-12-04,Compras online,compras,249.97,saida
+2025-12-05,Salário,receita,4800.0,entrada
+2025-12-05,Plano de saúde,saude,390.0,saida
+2025-12-05,Supermercado,alimentacao,354.5,saida
+2025-12-06,Condomínio,moradia,380.0,saida
+2025-12-06,Supermercado,alimentacao,295.96,saida
+2025-12-07,Compras online,compras,287.89,saida
+2025-12-07,Transferência para reserva,poupanca,224.35,saida
+2025-12-08,Cartão - pagamento mínimo,cartao,240.0,saida
+2025-12-08,Restaurante,alimentacao,145.27,saida
+2025-12-09,Academia,saude,129.9,saida
+2025-12-09,Delivery,alimentacao,68.89,saida
+2025-12-10,Internet,moradia,119.9,saida
+2025-12-10,Supermercado,alimentacao,199.6,saida
+2025-12-11,Celular,moradia,59.9,saida
+2025-12-11,Uber/99,transporte,26.72,saida
+2025-12-12,Uber/99,transporte,81.06,saida
+2025-12-13,Uber/99,transporte,32.25,saida
+2025-12-15,Compras online,compras,371.85,saida
+2025-12-16,Streaming,lazer,34.9,saida
+2025-12-18,Freela,receita,900.0,entrada
+2025-12-19,Supermercado,alimentacao,168.0,saida
+2025-12-20,Juros do rotativo,cartao,85.0,saida
+2025-12-21,Compras online,compras,308.59,saida
+2025-12-21,Transferência para reserva,poupanca,132.1,saida
+2025-12-22,Delivery,alimentacao,91.26,saida
+2025-12-22,Pix 23:57 • 'Novo favorecido' (chave aleatória),pix,1200.0,saida
+2025-12-22,"Pix 23:59 • 'Confirmação' R$ 1,00",pix,1.0,saida
+2025-12-23,Compras online,compras,277.12,saida
+2025-12-24,Restaurante,alimentacao,99.29,saida
+2025-12-26,Compras online,compras,230.43,saida

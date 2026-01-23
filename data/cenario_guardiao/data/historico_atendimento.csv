@@ -1,0 +1,5 @@
+data,canal,tema,resumo,resolvido
+2025-11-18,chat,Pix desconhecido,Cliente relatou Pix para favorecido que não reconhece. Orientado a bloquear cartão e acionar medidas de segurança.,sim
+2025-12-05,telefone,Golpe do falso suporte,Cliente recebeu ligação pedindo 'taxa de liberação'. Orientado a não compartilhar códigos e a validar canais oficiais.,sim
+2025-12-20,chat,Limites e segurança,Cliente pediu para reduzir limite noturno e travar Pix para favorecidos novos.,sim
+2025-12-23,chat,Confirmação de dispositivo,Cliente trocou de celular e teve dificuldade de login. Fluxo de recuperação concluído.,sim

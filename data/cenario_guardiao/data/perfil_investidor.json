@@ -1,0 +1,29 @@
+{
+  "nome": "Maria de Lourdes",
+  "idade": 67,
+  "profissao": "Aposentada",
+  "renda_mensal": 3200.0,
+  "perfil_investidor": "conservador",
+  "objetivo_principal": "Proteger minha conta e manter reserva de emergência",
+  "patrimonio_total": 45000.0,
+  "reserva_emergencia_atual": 25000.0,
+  "aceita_risco": false,
+  "preferencias_segurança": {
+    "limite_pix_noturno": 200.0,
+    "limite_pix_para_novos_favorecidos": 0.0,
+    "avisar_transacao_acima_de": 500.0,
+    "contato_confiavel": "Filho (Carlos) - confirmar ligações suspeitas"
+  },
+  "metas": [
+    {
+      "meta": "Manter reserva de emergência",
+      "valor_necessario": 25000.0,
+      "prazo": "2026-12"
+    },
+    {
+      "meta": "Trocar celular com segurança",
+      "valor_necessario": 2500.0,
+      "prazo": "2026-08"
+    }
+  ]
+}

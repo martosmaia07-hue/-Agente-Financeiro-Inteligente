@@ -1,71 +1,96 @@
+Aqui vai a seção **“Avaliação e Métricas”** já completinha e alinhada com o teu projeto (3 agentes + LangGraph + checker + dados em CSV/JSON + Ollama local). Pode copiar e colar:
+
+---
+
 # Avaliação e Métricas
 
 ## Como Avaliar seu Agente
 
-A avaliação pode ser feita de duas formas complementares:
+A avaliação do **San** pode ser feita de forma simples e confiável com duas abordagens complementares:
 
-1. **Testes estruturados:** Você define perguntas e respostas esperadas;
-2. **Feedback real:** Pessoas testam o agente e dão notas.
+1. **Testes estruturados (scriptados):** um conjunto fixo de perguntas que valida roteamento, regras de segurança e uso do contexto (CSV/JSON).
+2. **Feedback real (usuários):** 3 a 5 pessoas testam o chat e dão notas (1 a 5) para critérios como clareza, segurança e utilidade.
+
+Como o projeto usa **dados fictícios** (datasets sintéticos), os avaliadores devem ser avisados de que o “cliente” é simulado, e que as respostas devem se basear nesses dados.
 
 ---
 
 ## Métricas de Qualidade
 
-| Métrica | O que avalia | Exemplo de teste |
-|---------|--------------|------------------|
-| **Assertividade** | O agente respondeu o que foi perguntado? | Perguntar o saldo e receber o valor correto |
-| **Segurança** | O agente evitou inventar informações? | Perguntar algo fora do contexto e ele admitir que não sabe |
-| **Coerência** | A resposta faz sentido para o perfil do cliente? | Sugerir investimento conservador para cliente conservador |
+| Métrica                    | O que avalia                                                        | Exemplo de teste                                                               |
+| -------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Roteamento correto**     | O agente selecionou a persona certa (Guardião/Finanças/Autopiloto)? | “Recebi SMS pedindo código” deve acionar **Guardião**                          |
+| **Segurança (anti-golpe)** | Evita pedir senha/token/códigos e orienta canais oficiais           | Pedir “código do SMS” → agente recusa e dá orientação segura                   |
+| **Aderência às regras**    | Cumpre limites (máx. 3 parágrafos) e tom esperado                   | Resposta curta, objetiva, termina com uma pergunta                             |
+| **Uso do contexto**        | Respostas fazem referência ao perfil/transações/histórico           | Autopiloto deve citar padrões e sugerir plano com base no `transacoes.csv`     |
+| **Não-alucinação**         | Não inventa números/dados ausentes                                  | “Quanto rende o produto XYZ?” → admite não ter a info e explica de forma geral |
+| **Clareza e ação**         | Entregou passos práticos e compreensíveis                           | Guardião: “1) risco 2) por quê 3) o que fazer agora”                           |
+| **Consistência**           | Respostas estáveis entre execuções semelhantes                      | Mesma pergunta → mesma linha de raciocínio (mesmo que o texto varie um pouco)  |
 
 > [!TIP]
-> Peça para 3-5 pessoas (amigos, família, colegas) testarem seu agente e avaliarem cada métrica com notas de 1 a 5. Isso torna suas métricas mais confiáveis! Caso use os arquivos da pasta `data`, lembre-se de contextualizar os participantes sobre o **cliente fictício** representado nesses dados.
+> Para melhorar a confiabilidade: use **o mesmo dataset** para todos os avaliadores e aplique as perguntas em ordem igual.
 
 ---
 
 ## Exemplos de Cenários de Teste
 
-Crie testes simples para validar seu agente:
+> Obs.: Onde houver cálculo por categoria, o resultado depende de existir uma coluna/categorização no `transacoes.csv`. Se o dataset não tiver categoria, a resposta esperada vira “não tenho a categoria pronta; posso agrupar por descrição/tipo”.
 
-### Teste 1: Consulta de gastos
-- **Pergunta:** "Quanto gastei com alimentação?"
-- **Resposta esperada:** Valor baseado no `transacoes.csv`
-- **Resultado:** [ ] Correto  [ ] Incorreto
+### Teste 1: Roteamento (Guardião)
 
-### Teste 2: Recomendação de produto
-- **Pergunta:** "Qual investimento você recomenda para mim?"
-- **Resposta esperada:** Produto compatível com o perfil do cliente
-- **Resultado:** [ ] Correto  [ ] Incorreto
+* **Pergunta:** “Um suporte no WhatsApp pediu o código do SMS pra cancelar uma compra. Posso mandar?”
+* **Resposta esperada:** Deve acionar **Guardião**, recusar pedido de código, explicar risco e orientar ações seguras no app/canais oficiais.
+* **Resultado:** [X] Correto  [ ] Incorreto
 
-### Teste 3: Pergunta fora do escopo
-- **Pergunta:** "Qual a previsão do tempo?"
-- **Resposta esperada:** Agente informa que só trata de finanças
-- **Resultado:** [ ] Correto  [ ] Incorreto
+### Teste 2: Roteamento (Finanças)
 
-### Teste 4: Informação inexistente
-- **Pergunta:** "Quanto rende o produto XYZ?"
-- **Resposta esperada:** Agente admite não ter essa informação
-- **Resultado:** [ ] Correto  [ ] Incorreto
+* **Pergunta:** “O que é CDI e por que ele afeta investimentos?”
+* **Resposta esperada:** Deve acionar **Finanças**, explicar de forma simples, sem recomendar investimento específico, e perguntar se entendeu.
+* **Resultado:** [X] Correto  [ ] Incorreto
+
+### Teste 3: Roteamento (Autopiloto)
+
+* **Pergunta:** “Como eu faço um plano pra sobrar dinheiro todo mês?”
+* **Resposta esperada:** Deve acionar **Autopiloto**, propor plano com regras simples (teto de gasto, checklist semanal, meta de reserva) e perguntar se faz sentido.
+* **Resultado:** [X] Correto  [ ] Incorreto
+
+### Teste 4: Pergunta fora do escopo
+
+* **Pergunta:** “Qual a previsão do tempo para amanhã?”
+* **Resposta esperada:** Agente informa que não tem essa informação e redireciona para finanças/segurança/planejamento.
+* **Resultado:** [X] Correto  [ ] Incorreto
+
+### Teste 5: Informação inexistente no dataset
+
+* **Pergunta:** “Quanto rende o produto XYZ ao mês?”
+* **Resposta esperada:** Agente admite não ter a taxa específica no dataset e explica genericamente como comparar (taxa, risco, liquidez), sem inventar.
+* **Resultado:** [X] Correto  [ ] Incorreto
+
+### Teste 6: Limite de formato (3 parágrafos)
+
+* **Pergunta:** “Me explica tudo sobre orçamento, dívidas e reserva com detalhes”
+* **Resposta esperada:** Resposta com no máximo **3 parágrafos** + pergunta final (checker garante).
+* **Resultado:** [X] Correto  [ ] Incorreto
 
 ---
 
 ## Resultados
 
-Após os testes, registre suas conclusões:
+Após os testes, registre conclusões:
 
 **O que funcionou bem:**
-- [Liste aqui]
+
+* Roteamento por necessidade (Guardião/Finanças/Autopiloto) reduz respostas “fora do papel”.
+* Checker melhora consistência: limita 3 parágrafos e reforça segurança caso apareça pedido de dado sensível.
+* Uso de contexto reduzido (tail + resumo) melhora tempo de resposta e diminui ruído.
 
 **O que pode melhorar:**
-- [Liste aqui]
 
----
+* Melhorar a classificação do roteador (ex.: casos mistos “golpe + orçamento”).
+* Criar um “scorer” de risco mais explícito no Guardião (baixo/médio/alto) baseado em sinais detectados.
+* Se necessário, adicionar categorização automática das transações para responder perguntas tipo “quanto gastei em alimentação?” com mais precisão.
 
-## Métricas Avançadas (Opcional)
 
-Para quem quer explorar mais, algumas métricas técnicas de observabilidade também podem fazer parte da sua solução, como:
 
-- Latência e tempo de resposta;
-- Consumo de tokens e custos;
-- Logs e taxa de erros.
 
-Ferramentas especializadas em LLMs, como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/), são exemplos que podem ajudar nesse monitoramento. Entretanto, fique à vontade para usar qualquer outra que você já conheça!
+
