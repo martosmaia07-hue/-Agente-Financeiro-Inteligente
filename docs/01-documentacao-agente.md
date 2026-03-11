@@ -5,7 +5,7 @@
 ### Problema
 > Qual problema financeiro seu agente resolve?
 
-[Sua descrição aqui]
+Muitas pessoas têm dificuldade em acompanhar seus gastos diários, entender para onde o dinheiro está indo e manter o orçamento equilibrado. Isso pode levar a desperdício de dinheiro, dificuldade em economizar e falta de clareza sobre hábitos de consumo.
 
 ### Solução
 > Como o agente resolve esse problema de forma proativa?
