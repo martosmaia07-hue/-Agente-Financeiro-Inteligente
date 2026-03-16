@@ -1,0 +1,101 @@
+{
+  "versao": "1.0.0",
+  "ano": 2026,
+  "descricao": "Calendário de vencimentos de DARF para IR sobre ações",
+  
+  "vencimentos_darf": {
+    "01": {
+      "mes_referencia": "Janeiro/2026",
+      "vencimento": "2026-02-27",
+      "dia_semana": "Sexta-feira",
+      "observacao": "Último dia útil de Fevereiro"
+    },
+    "02": {
+      "mes_referencia": "Fevereiro/2026",
+      "vencimento": "2026-03-31",
+      "dia_semana": "Terça-feira",
+      "observacao": "Último dia útil de Março"
+    },
+    "03": {
+      "mes_referencia": "Março/2026",
+      "vencimento": "2026-04-30",
+      "dia_semana": "Quinta-feira",
+      "observacao": "Último dia útil de Abril"
+    },
+    "04": {
+      "mes_referencia": "Abril/2026",
+      "vencimento": "2026-05-29",
+      "dia_semana": "Sexta-feira",
+      "observacao": "Último dia útil de Maio"
+    },
+    "05": {
+      "mes_referencia": "Maio/2026",
+      "vencimento": "2026-06-30",
+      "dia_semana": "Terça-feira",
+      "observacao": "Último dia útil de Junho"
+    },
+    "06": {
+      "mes_referencia": "Junho/2026",
+      "vencimento": "2026-07-31",
+      "dia_semana": "Sexta-feira",
+      "observacao": "Último dia útil de Julho"
+    },
+    "07": {
+      "mes_referencia": "Julho/2026",
+      "vencimento": "2026-08-31",
+      "dia_semana": "Segunda-feira",
+      "observacao": "Último dia útil de Agosto"
+    },
+    "08": {
+      "mes_referencia": "Agosto/2026",
+      "vencimento": "2026-09-30",
+      "dia_semana": "Quarta-feira",
+      "observacao": "Último dia útil de Setembro"
+    },
+    "09": {
+      "mes_referencia": "Setembro/2026",
+      "vencimento": "2026-10-30",
+      "dia_semana": "Sexta-feira",
+      "observacao": "Último dia útil de Outubro"
+    },
+    "10": {
+      "mes_referencia": "Outubro/2026",
+      "vencimento": "2026-11-30",
+      "dia_semana": "Segunda-feira",
+      "observacao": "Último dia útil de Novembro"
+    },
+    "11": {
+      "mes_referencia": "Novembro/2026",
+      "vencimento": "2026-12-30",
+      "dia_semana": "Quarta-feira",
+      "observacao": "Último dia útil de Dezembro"
+    },
+    "12": {
+      "mes_referencia": "Dezembro/2026",
+      "vencimento": "2027-01-29",
+      "dia_semana": "Sexta-feira",
+      "observacao": "Último dia útil de Janeiro/2027"
+    }
+  },
+  
+  "feriados_nacionais_2026": [
+    {"data": "2026-01-01", "nome": "Confraternização Universal"},
+    {"data": "2026-02-16", "nome": "Carnaval"},
+    {"data": "2026-02-17", "nome": "Carnaval"},
+    {"data": "2026-04-03", "nome": "Sexta-feira Santa"},
+    {"data": "2026-04-21", "nome": "Tiradentes"},
+    {"data": "2026-05-01", "nome": "Dia do Trabalho"},
+    {"data": "2026-06-04", "nome": "Corpus Christi"},
+    {"data": "2026-09-07", "nome": "Independência do Brasil"},
+    {"data": "2026-10-12", "nome": "Nossa Senhora Aparecida"},
+    {"data": "2026-11-02", "nome": "Finados"},
+    {"data": "2026-11-15", "nome": "Proclamação da República"},
+    {"data": "2026-12-25", "nome": "Natal"}
+  ],
+  
+  "regras_vencimento": {
+    "regra_geral": "Último dia útil do mês subsequente",
+    "se_feriado": "Antecipar para o dia útil imediatamente anterior",
+    "se_fim_semana": "Antecipar para a sexta-feira anterior"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "versao": "1.0.0",
+  "ultima_atualizacao": null,
+  "usuario_id": "default",
+  
+  "swing_trade": {
+    "valor": 0.00,
+    "origem": []
+  },
+  
+  "day_trade": {
+    "valor": 0.00,
+    "origem": []
+  },
+  
+  "historico_compensacoes": []
+}

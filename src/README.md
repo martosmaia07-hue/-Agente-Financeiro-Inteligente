@@ -1,31 +1,45 @@
-# Código da Aplicação
+# Código-fonte do IR Smart
 
-Esta pasta contém o código do seu agente financeiro.
+Este diretório contém o código-fonte principal do projeto IR Smart.
 
-## Estrutura Sugerida
+## Estrutura dos Módulos
 
-```
-src/
-├── app.py              # Aplicação principal (Streamlit/Gradio)
-├── agente.py           # Lógica do agente
-├── config.py           # Configurações (API keys, etc.)
-└── requirements.txt    # Dependências
-```
+| Arquivo | Descrição |
+|---------|-----------|
+| `app.py` | Interface Streamlit principal |
+| `motor_calculo.py` | Engine de cálculo de IR (core do sistema) |
+| `chatgpt_client.py` | Cliente para comunicação com GPT-4 |
+| `database.py` | Gerenciamento do banco SQLite |
+| `validacao.py` | Sistema de validação anti-alucinação |
+| `utils.py` | Funções utilitárias |
 
-## Exemplo de requirements.txt
-
-```
-streamlit
-openai
-python-dotenv
-```
-
-## Como Rodar
+## Como executar
 
 ```bash
-# Instalar dependências
-pip install -r requirements.txt
-
-# Rodar a aplicação
-streamlit run app.py
+# Da raiz do projeto
+streamlit run src/app.py
 ```
+
+## Arquitetura
+
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   app.py    │────▶│ chatgpt_    │────▶│  motor_     │
+│ (Interface) │     │  client.py  │     │ calculo.py  │
+└─────────────┘     └─────────────┘     └─────────────┘
+       │                   │                   │
+       │                   │                   │
+       ▼                   ▼                   ▼
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│ database.py │     │ validacao.py│     │  utils.py   │
+│   (SQLite)  │     │(Anti-alucin)│     │ (Helpers)   │
+└─────────────┘     └─────────────┘     └─────────────┘
+```
+
+## Dependências
+
+- Python 3.10+
+- Streamlit
+- OpenAI API
+- SQLite
+- Ver `requirements.txt` na raiz do projeto

@@ -1,0 +1,100 @@
+{
+  "versao": "1.0.0",
+  "data_atualizacao": "2026-03-04",
+  "fonte": "IN RFB nº 1.585/2015",
+  
+  "swing_trade": {
+    "aliquota": 0.15,
+    "aliquota_percentual": "15%",
+    "descricao": "Operações normais de compra e venda de ações realizadas em dias diferentes",
+    "isencao_mensal": 20000.00,
+    "isencao_descricao": "Vendas até R$ 20.000,00 por mês são isentas de IR",
+    "codigo_darf": "6015",
+    "base_legal": "Lei nº 8.981/1995, art. 21",
+    "observacoes": [
+      "A isenção vale para o total de vendas no mês, não para cada operação",
+      "Se ultrapassar R$ 20.000,00, paga IR sobre TODO o lucro do mês",
+      "Prejuízos podem ser compensados com lucros futuros do mesmo tipo"
+    ]
+  },
+  
+  "day_trade": {
+    "aliquota": 0.20,
+    "aliquota_percentual": "20%",
+    "descricao": "Operações de compra e venda do mesmo ativo no mesmo dia",
+    "isencao_mensal": 0.00,
+    "isencao_descricao": "Day trade NÃO possui isenção mensal",
+    "codigo_darf": "6015",
+    "base_legal": "Lei nº 8.981/1995, art. 21, §1º",
+    "observacoes": [
+      "Não há isenção para day trade, independente do valor",
+      "Prejuízos de day trade só compensam com lucros de day trade",
+      "A alíquota é maior devido ao caráter especulativo"
+    ]
+  },
+  
+  "compensacao_prejuizo": {
+    "permitido": true,
+    "mesmo_tipo_operacao": true,
+    "prazo_utilizacao": "indeterminado",
+    "percentual_maximo_mes": 1.0,
+    "base_legal": "IN RFB nº 1.585/2015, art. 60",
+    "regras": [
+      "Prejuízos de swing trade só compensam lucros de swing trade",
+      "Prejuízos de day trade só compensam lucros de day trade",
+      "Não há prazo limite para utilização do prejuízo",
+      "Pode compensar 100% do lucro até zerar o prejuízo acumulado"
+    ]
+  },
+  
+  "vencimento_darf": {
+    "regra": "Último dia útil do mês subsequente ao da operação",
+    "exemplo": "Operações de Janeiro/2026 → DARF vence em 28/02/2026",
+    "codigo_receita": "6015",
+    "descricao_codigo": "IRPF - Ganhos líquidos em operações em bolsa",
+    "observacoes": [
+      "Se o último dia do mês for sábado, domingo ou feriado, antecipar para o dia útil anterior",
+      "Pagamento em atraso gera multa e juros (SELIC)"
+    ]
+  },
+  
+  "custos_dedutiveis": {
+    "permitidos": [
+      "Corretagem",
+      "Emolumentos da B3",
+      "Taxa de liquidação",
+      "Taxa de registro",
+      "ISS sobre corretagem"
+    ],
+    "nao_permitidos": [
+      "Taxa de custódia",
+      "Assinatura de plataformas de análise",
+      "Cursos de investimento"
+    ],
+    "base_legal": "IN RFB nº 1.585/2015, art. 56"
+  },
+  
+  "preco_medio": {
+    "metodo": "Custo médio ponderado",
+    "formula": "(Quantidade antiga × Preço médio antigo + Quantidade nova × Preço novo) / Quantidade total",
+    "inclui_custos": true,
+    "descricao": "O preço médio deve incluir os custos de aquisição (corretagem, emolumentos)",
+    "base_legal": "IN RFB nº 1.585/2015, art. 56, §1º"
+  },
+  
+  "fato_gerador": {
+    "momento": "Data da liquidação da operação (D+2 para ações)",
+    "base_legal": "IN RFB nº 1.585/2015, art. 59",
+    "observacao": "O imposto é devido sobre o ganho líquido auferido"
+  },
+  
+  "limites_e_valores": {
+    "isencao_mensal_swing_trade": 20000.00,
+    "aliquota_swing_trade": 0.15,
+    "aliquota_day_trade": 0.20,
+    "codigo_darf": "6015",
+    "multa_atraso_minima": 0.0033,
+    "multa_atraso_maxima": 0.20,
+    "juros_selic": "Taxa SELIC acumulada"
+  }
+}
