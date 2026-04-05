@@ -1,0 +1,11 @@
+# Ficheiros de ambiente (Oculta a sua chave de API)
+.env
+
+# Pastas de ambiente virtual Python
+venv/
+env/
+.venv/
+
+# Ficheiros temporários do Python
+__pycache__/
+*.pyc
