@@ -1,0 +1,20 @@
+[
+  {
+    "cliente_id": "cli_001",
+    "meta_id": "meta_001",
+    "tipo": "reserva_operacional",
+    "descricao": "Construir reserva equivalente a 1 mês de despesas fixas",
+    "valor_meta": 10000.00,
+    "valor_atual": 4850.00,
+    "status": "em_andamento"
+  },
+  {
+    "cliente_id": "cli_002",
+    "meta_id": "meta_002",
+    "tipo": "reduzir_dependencia_credito",
+    "descricao": "Manter o caixa positivo sem uso de limite por 90 dias",
+    "valor_meta": 90,
+    "valor_atual": 37,
+    "status": "em_andamento"
+  }
+]

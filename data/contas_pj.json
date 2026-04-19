@@ -1,0 +1,24 @@
+[
+  {
+    "conta_id": "conta_001",
+    "cliente_id": "cli_001",
+    "banco": "Bradesco",
+    "agencia": "1234",
+    "conta": "56789-0",
+    "saldo_atual": 4850.00,
+    "limite_disponivel": 2000.00,
+    "reserva_minima_recomendada": 3500.00,
+    "status_caixa": "atencao"
+  },
+  {
+    "conta_id": "conta_002",
+    "cliente_id": "cli_002",
+    "banco": "Bradesco",
+    "agencia": "4321",
+    "conta": "98765-0",
+    "saldo_atual": 12840.50,
+    "limite_disponivel": 5000.00,
+    "reserva_minima_recomendada": 8000.00,
+    "status_caixa": "saudavel"
+  }
+]

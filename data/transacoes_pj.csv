@@ -1,0 +1,11 @@
+transacao_id,cliente_id,data,tipo,categoria,descricao,valor,canal
+tx_001,cli_001,2026-04-08,entrada,recebimento_pix,Recebimento PIX Cliente Alpha,1200.00,PIX
+tx_002,cli_001,2026-04-08,saida,insumos,Compra de materiais gráficos,320.00,Debito
+tx_003,cli_001,2026-04-07,saida,retirada_pessoal,Transferência para conta pessoal,900.00,PIX
+tx_004,cli_001,2026-04-06,saida,software,Assinatura ferramenta de design,89.90,Cartao
+tx_005,cli_001,2026-04-05,entrada,venda,Pagamento projeto identidade visual,2400.00,PIX
+tx_006,cli_001,2026-04-03,saida,tarifa_bancaria,Tarifa da conta PJ,39.00,Conta
+tx_007,cli_002,2026-04-08,entrada,venda,Recebimento serviço de revisão,1800.00,PIX
+tx_008,cli_002,2026-04-07,saida,fornecedor,Compra de peças automotivas,950.00,Transferencia
+tx_009,cli_002,2026-04-06,saida,folha_pagamento,Pagamento ajudante,2200.00,Transferencia
+tx_010,cli_002,2026-04-05,saida,aluguel,Aluguel da oficina,2500.00,Boleto

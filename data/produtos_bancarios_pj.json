@@ -1,0 +1,23 @@
+[
+  {
+    "produto_id": "prod_001",
+    "nome": "Capital de Giro PJ",
+    "categoria": "credito",
+    "descricao": "Linha de crédito para reforço de caixa de curto prazo",
+    "quando_sugerir": "quando houver risco de falta de caixa e histórico recorrente de entradas"
+  },
+  {
+    "produto_id": "prod_002",
+    "nome": "Cobrança com QR Code PIX",
+    "categoria": "recebimento",
+    "descricao": "Facilita recebimento rápido e melhora liquidez",
+    "quando_sugerir": "quando houver muitos valores em aberto ou atraso de recebimentos"
+  },
+  {
+    "produto_id": "prod_003",
+    "nome": "Conta PJ com gestão financeira",
+    "categoria": "gestao",
+    "descricao": "Ferramenta para organizar entradas, saídas e vencimentos",
+    "quando_sugerir": "quando o cliente apresentar baixa organização do fluxo de caixa"
+  }
+]

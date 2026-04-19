@@ -1,0 +1,4 @@
+interacao_id,cliente_id,data,canal,pergunta,resposta_resumida
+int_001,cli_001,2026-04-05,chat,Como está meu caixa esta semana?,Foi informado que o caixa estava em atenção por causa de contas a vencer.
+int_002,cli_001,2026-04-06,chat,Posso transferir dinheiro para minha conta pessoal?,O agente alertou sobre impacto no capital de giro.
+int_003,cli_002,2026-04-07,chat,Vale pegar empréstimo para comprar peças?,O agente sugeriu simular impacto antes da contratação.

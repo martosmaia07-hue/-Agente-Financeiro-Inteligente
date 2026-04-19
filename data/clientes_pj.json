@@ -1,0 +1,26 @@
+[
+  {
+    "cliente_id": "cli_001",
+    "nome_fantasia": "Mariana Souza Studio",
+    "razao_social": "Mariana Souza Design MEI",
+    "tipo_empresa": "MEI",
+    "segmento": "Design Gráfico",
+    "tempo_empresa_meses": 18,
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "perfil_financeiro": "organização intermediária",
+    "usa_conta_pj_com_frequencia": true
+  },
+  {
+    "cliente_id": "cli_002",
+    "nome_fantasia": "Oficina Rota Certa",
+    "razao_social": "Rota Certa Serviços Automotivos Ltda",
+    "tipo_empresa": "Microempresa",
+    "segmento": "Oficina Mecânica",
+    "tempo_empresa_meses": 42,
+    "cidade": "Osasco",
+    "estado": "SP",
+    "perfil_financeiro": "alto volume operacional",
+    "usa_conta_pj_com_frequencia": true
+  }
+]

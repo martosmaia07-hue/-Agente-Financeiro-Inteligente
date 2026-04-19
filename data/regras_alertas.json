@@ -1,0 +1,23 @@
+[
+  {
+    "regra_id": "reg_001",
+    "nome": "caixa_abaixo_reserva",
+    "descricao": "Dispara alerta quando saldo atual está abaixo da reserva mínima recomendada",
+    "condicao": "saldo_atual < reserva_minima_recomendada",
+    "mensagem": "Seu caixa está abaixo da reserva mínima recomendada para a operação."
+  },
+  {
+    "regra_id": "reg_002",
+    "nome": "excesso_retirada_pessoal",
+    "descricao": "Dispara alerta quando retiradas pessoais passam de 20% das saídas do mês",
+    "condicao": "percentual_retirada_pessoal > 0.20",
+    "mensagem": "As retiradas pessoais estão elevadas e podem comprometer o caixa do negócio."
+  },
+  {
+    "regra_id": "reg_003",
+    "nome": "concentracao_vencimentos",
+    "descricao": "Dispara alerta quando há muitas contas a pagar em um curto período",
+    "condicao": "qtd_contas_7_dias >= 3",
+    "mensagem": "Você possui várias obrigações concentradas nos próximos dias."
+  }
+]

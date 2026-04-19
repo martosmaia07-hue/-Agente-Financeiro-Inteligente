@@ -1,0 +1,5 @@
+recebivel_id,cliente_id,data_prevista,origem,descricao,valor,status
+cr_001,cli_001,2026-04-13,cliente,Cliente Alpha,2400.00,previsto
+cr_002,cli_001,2026-04-16,cliente,Cliente Beta,1350.00,previsto
+cr_003,cli_002,2026-04-10,cliente,Reparo frota empresa Zeta,2100.00,previsto
+cr_004,cli_002,2026-04-14,cliente,Serviço de manutenção preventiva,1750.00,previsto

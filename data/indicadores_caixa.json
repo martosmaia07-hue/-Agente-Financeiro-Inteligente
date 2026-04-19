@@ -1,0 +1,20 @@
+[
+  {
+    "cliente_id": "cli_001",
+    "media_entradas_mensais": 12400.00,
+    "media_saidas_mensais": 10950.00,
+    "percentual_retirada_pessoal_mes": 0.22,
+    "ticket_medio_entrada": 1450.00,
+    "dias_com_maior_pressao_caixa": ["10", "15", "25"],
+    "situacao_atual": "atencao"
+  },
+  {
+    "cliente_id": "cli_002",
+    "media_entradas_mensais": 28500.00,
+    "media_saidas_mensais": 24100.00,
+    "percentual_retirada_pessoal_mes": 0.08,
+    "ticket_medio_entrada": 2100.00,
+    "dias_com_maior_pressao_caixa": ["05", "10"],
+    "situacao_atual": "saudavel"
+  }
+]

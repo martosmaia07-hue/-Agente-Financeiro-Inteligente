@@ -1,0 +1,6 @@
+conta_id,cliente_id,data_vencimento,categoria,descricao,valor,status,prioridade
+cp_001,cli_001,2026-04-12,fornecedor,Fornecedor de impressão,1200.00,pendente,alta
+cp_002,cli_001,2026-04-14,servicos,Internet e telefone,189.90,pendente,media
+cp_003,cli_001,2026-04-15,imposto,DAS MEI,75.60,pendente,alta
+cp_004,cli_002,2026-04-11,fornecedor,Fornecedor de peças,3200.00,pendente,alta
+cp_005,cli_002,2026-04-13,utilidades,Energia elétrica,640.20,pendente,media
