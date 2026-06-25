@@ -1,39 +1,18 @@
-# Base de Conhecimento
-
-## Dados Utilizados
-
-Descreva se usou os arquivos da pasta `data`, por exemplo:
-
-| Arquivo | Formato | Utilização no Agente |
-|---------|---------|---------------------|
-| `historico_duvidas.csv` | CSV | Contextualizar dúvidas anteriores |
-| `perfil_dev.json` | JSON | Dados do Desenvolvedor com nível de conhecimento do mesmo |
-| `erros_comuns.csv` | CSV | Entender os erros comuns em Python e usar sua causa na explicação |
-
----
-
-## Estratégia de Integração
-
-### Como os dados são carregados?
-> Descreva como seu agente acessa a base de conhecimento.
-
-Existem duas possibilidades, injetar os dados diretamente no prompt (Ctrl + C, Ctrl + V) ou carregar os arquivos via código, como no exemplo abaixo:
-
-```python
+import json, requests
 import pandas as pd
-import json
+import streamlit as st
 
+# ============ CONFIGURAÇÃO ============
+OLLAMA_URL = "http://localhost:11434/api/generate"
+MODELO = "gpt-oss"
+
+# ============ CARREGAR DADOS ============
 historico_duvidas = pd.read_csv("./data/historico_duvidas.csv", encoding="utf-8")
-perfil_do_desenvolvedor = json.load(open("./data/perfil_do_dev.json", encoding="utf-8"))
+perfil_do_desenvolvedor = json.load(open("./data/perfil_dev.json", encoding="utf-8"))
 erros_comuns = pd.read_csv("./data/erros_comuns.csv", encoding="utf-8")
-```
 
-### Como os dados são usados no prompt?
-> Os dados vão no system prompt? São consultados dinamicamente?
-
-Para simplificar, podemos simplesmente "injetar" os dados em nosso prompt, garantindo que o Agente tenha o melhor contexto possível. Lembrando que, em soluções mais robustas, o ideal é que essas informaçoes sejam carregadas dinamicamente para que possamos ganhar flexibilidade.
-
-```text
+# ============ MONTAR CONTEXTO ============
+contexto = """
 PERFIL DO DESENVOLVEDOR (data/perfil_dev.json):
 {
     "nome": "Victor",
@@ -48,7 +27,7 @@ HISTORICO DE DUVIDAS (data/historico_duvidas.csv):
 data,topico,conceito,duvida,resolvido,nivel_dificuldade,precisou_resposta_direta
 2025-01-10,variaveis,variaveis,"Nao entendi como funcionam as variaveis",sim,1,sim
 2025-01-15,variaveis,tipos_primitivos,"Qual a diferenca entre int e float?",sim,1,nao
-2025-01-20,entrada_saida,input,"Como usar input para receber dados?",sim,1,sim
+2025-01-20,entrada_saida,input,"Como ausar input para receber dados?",sim,1,sim
 2025-01-25,condicionais,if_else,"Nao entendi quando usar else",sim,1,nao
 2025-02-01,condicionais,elif,"Qual a diferenca entre elif e varios ifs?",sim,2,sim
 2025-02-05,loops,for,"Nao entendi como funciona o for",sim,2,sim
@@ -124,32 +103,50 @@ erro_comum,topico,nivel,explicacao_simples,dica_guiada
 "ConnectionRefusedError","redes","intermediario","O servidor recusou a conexão solicitada.","O serviço está realmente em execução e aceitando conexões?"
 "TimeoutExpired","processos","intermediario","Um processo excedeu o tempo limite permitido.","Essa tarefa está demorando mais do que deveria para terminar?"
 "ChildProcessError","processos","avancado","Ocorreu um erro ao manipular processos filhos.","O processo filho foi criado e encerrado corretamente?"
-```
+"""
 
----
+# ============ SYSTEM PROMPT ============
+SYSTEM_PROMPT = """Você é o Pierre, um mentor da área de Progrmação em Python, amigável e didático.
 
-## Exemplo de Contexto Montado
+OBJETIVO:
+Tirar dúvidas e ajudar o desenvolvedor a encontrar soluções para seus problemas de forma guiada, completa e didática, analisando o
+histórico do desenvolvedor para uma reposta mais contextualizada.
 
-> Mostre um exemplo de como os dados são formatados para o agente.
+REGRAS:
+1. Você deve responder apenas questões relacionadas a programação em Python, nenhum assunto fora desse meio é permitido ser dito
+e caso alguma pergunta fora desse meio seja feita diga algo parecido com: "Sou especializado em programação em Python e não tenho
+informações sobre previsão do tempo. Posso ajudar com algo relacionado à programação em Python?"
+2. Você deve responder apenas questões relacionadas a programação em Python, nenhuma outra linguagem de programação é permitida
+ser dita e caso outra linguagem de programação seja solicitada diga algo parecido com: "Não tenho informações sobre outras
+linguagens de programação, posso te explicar de acordo com o Python..."..
+3. Sempre consulte o histórico de dúvidas do desenvolvedor para respostas mais personalizadas.
+4. Utilize por padrão o método de Scaffolding, fazer perguntas antes de revelar a solução, em suas explicações, como um mentor
+pensando no melhor para o seu aluno, porém caso seja solicitado explicitamente pelo desenvolvedor que ele quer a resposta de forma
+direta, responda de forma direta sem o uso do Scaffolding.
+5. Utilize o scaffolding e a solução do problema do usuário na mesma resposta.
+6. Caso você não saiba de algo, admita: "Não tenho informação sobre esse assunto...".
+7. Utilize uma linguagem simples e de acordo com o nível de conhecimento do desenvolvedor.
+8. Em suas explicações seja repleto de conceitos, não poupe definições e sempre utilize exemplos fáceis e práticos para
+um melhor entendimento.
+"""
 
-```
-Dados do Desenvolvedor:
-- Nome: Victor
-- Nível de conhecimento: Iniciante
-- Objetivo: Ter a mentalidade de um desenvolvedor podendo aplicar seus estudos da melhor forma no mercado de trabalho sempre encontrando soluções ótimas para o problema que enfrentar
-- Perfil aprendizado: Gosta de ser perguntado até entender a resolução de sua dúvida e gosta de respostas completas, repletas de conteúdo
+# ============ CHAMAR OLLAMA ============
+def perguntar(msg):
+    prompt = f"""
+    {SYSTEM_PROMPT}
 
-Histórico de dúvidas:
-- Data: 2025-06-18
-- Topico: Tipo de dados
-- Conceito: Tipagem
-- Dúvida: Recebi TypeError ao somar um numero com uma string
-- Resolvido: Sim
+    CONTEXTO DO CLIENTE:
+    {contexto}
 
-Erros Comuns:
-- Tipo: TypeError
-- Topico: Tipo de dados
-- Nivel: Iniciante
-- Explicação Simples: Foi realizada uma operação entre tipos incompatíveis
-- Dica guiada: Os valores envolvidos na operação possuem tipos compatíveis? Você verificou usando type()?
-```
+    Pergunta: {msg}"""
+
+    r = requests.post(OLLAMA_URL, json={"model": MODELO, "prompt": prompt, "stream": False})
+    return r.json()['response']
+
+# ============ INTERFACE ============
+st.title("🎓 Pierre, Seu Mentor de Python")
+
+if pergunta := st.chat_input("Sua dúvida sobre Python..."):
+    st.chat_message("user").write(pergunta)
+    with st.spinner("..."):
+        st.chat_message("assistant").write(perguntar(pergunta))

@@ -1,0 +1,33 @@
+data,topico,conceito,duvida,resolvido,nivel_dificuldade,precisou_resposta_direta
+2025-01-10,variaveis,variaveis,"Nao entendi como funcionam as variaveis",sim,1,sim
+2025-01-15,variaveis,tipos_primitivos,"Qual a diferenca entre int e float?",sim,1,nao
+2025-01-20,entrada_saida,input,"Como usar input para receber dados?",sim,1,sim
+2025-01-25,condicionais,if_else,"Nao entendi quando usar else",sim,1,nao
+2025-02-01,condicionais,elif,"Qual a diferenca entre elif e varios ifs?",sim,2,sim
+2025-02-05,loops,for,"Nao entendi como funciona o for",sim,2,sim
+2025-02-10,loops,while,"Meu while entra em loop infinito",sim,2,sim
+2025-02-15,loops,range,"Nao entendi o uso da funcao range",sim,1,nao
+2025-02-20,listas,indices,"Recebi IndexError ao acessar lista",sim,2,nao
+2025-02-25,listas,append,"Como adicionar elementos em uma lista?",sim,1,nao
+2025-03-01,listas,percorrer_lista,"Qual a melhor forma de percorrer uma lista?",sim,2,sim
+2025-03-05,tuplas,tuplas,"Nao entendi a diferenca entre lista e tupla",sim,2,sim
+2025-03-10,dicionarios,chaves,"Recebi KeyError ao acessar uma chave",sim,2,nao
+2025-03-15,dicionarios,iteracao,"Como percorrer um dicionario?",sim,2,sim
+2025-03-20,strings,fatiamento,"Nao entendi como funciona slicing",sim,2,sim
+2025-03-25,strings,metodos_string,"Quando usar split e join?",sim,2,nao
+2025-04-01,funcoes,parametros,"Qual a diferenca entre parametro e argumento?",sim,2,sim
+2025-04-05,funcoes,retorno,"Nao entendi para que serve return",sim,2,sim
+2025-04-10,funcoes,escopo,"O que e escopo de variaveis?",sim,3,sim
+2025-04-15,tratamento_erros,try_except,"Como evitar que o programa pare com erro?",sim,2,nao
+2025-04-20,arquivos,open,"Erro ao abrir arquivo txt",sim,2,sim
+2025-04-25,arquivos,leitura_arquivos,"Como ler um arquivo linha por linha?",sim,2,nao
+2025-05-01,modulos,import,"Nao entendi como funcionam imports",sim,2,sim
+2025-05-05,bibliotecas,pip,"Recebi ModuleNotFoundError",sim,2,sim
+2025-05-10,poo,classes,"Nao entendi o conceito de classes",nao,3,nao
+2025-05-15,poo,objetos,"Qual a diferenca entre classe e objeto?",nao,3,nao
+2025-05-20,poo,metodos,"Como criar metodos em uma classe?",nao,3,nao
+2025-05-25,poo,heranca,"Nao entendi heranca em Python",nao,4,nao
+2025-06-01,recursao,recursao,"Recebi RecursionError",nao,4,nao
+2025-06-05,testes,assert,"Como usar assert para validar resultados?",sim,3,nao
+2025-06-10,estruturas_dados,sets,"Quando devo usar um set?",sim,2,sim
+2025-06-15,compreensao_listas,list_comprehension,"Nao entendi list comprehension",nao,3,nao
