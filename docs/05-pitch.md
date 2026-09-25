@@ -1,44 +1,12 @@
 # Pitch (3 minutos)
 
-> [!TIP]
-> Você pode usar alguns slides pra apoiar no seu Pitch e mostrar sua solução na prática.
- 
-## Roteiro Sugerido
+Roteiro de 3 Minutos:
 
-### 1. O Problema (30 seg)
-> Qual dor do cliente você resolve?
+# Problema (0-45s):
+Clientes de bancos perdem-se em meio a extratos complexos e tomam decisões ruins por falta de orientações personalizadas em tempo real.
 
-[Sua descrição aqui]
+# Solução (45s-2m): 
+Apresentação do FinBot, um agente generativo conectado a dados reais de transações e perfis que antecipa necessidades de crédito e investimentos com segurança antifraude/antialucinação.   
 
-### 2. A Solução (1 min)
-> Como seu agente resolve esse problema?
-
-[Sua descrição aqui]
-
-### 3. Demonstração (1 min)
-> Mostre o agente funcionando (pode ser gravação de tela)
-
-[Descreva o que será mostrado]
-
-### 4. Diferencial e Impacto (30 seg)
-> Por que essa solução é inovadora e qual é o impacto dela na sociedade?
-
-[Sua descrição aqui]
-
----
-
-## Checklist do Pitch
-
-- [ ] Duração máxima de 3 minutos
-- [ ] Problema claramente definido
-- [ ] Solução demonstrada na prática
-- [ ] Diferencial explicado
-- [ ] Áudio e vídeo com boa qualidade
-
----
-
-## Link do Vídeo
-
-> Cole aqui o link do seu pitch (YouTube, Loom, Google Drive, etc.)
-
-[Link do vídeo]
+# Impacto e Inovação (2m-3m): 
+Demonstração rápida do prototipador em Streamlit, destacando a autonomia consultiva e o ganho de fidelidade para a instituição financeira.
